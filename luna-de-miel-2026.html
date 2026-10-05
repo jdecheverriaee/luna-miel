@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>🌙 de 🍯 Angi y Cuye 💞</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --font:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  --bg:#EDF4F2;
+  --surface:#FFFFFF;
+  --ink:#14243A;
+  --muted:#4F6172;
+  --line:#C7D6D3;
+  --lagoon:#0B747E;
+  --lagoon-soft:#D8EDEE;
+  --alert:#B4235A;
+  --alert-soft:#FBE0EA;
+  --ok:#25704A;
+  --ok-soft:#DDF1E4;
+  --warn:#8A5600;
+  --warn-soft:#FCEECF;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1926;
+    --surface:#162636;
+    --ink:#E7EFF3;
+    --muted:#9FB2C0;
+    --line:#2A3E51;
+    --lagoon:#57C6CF;
+    --lagoon-soft:#143843;
+    --alert:#FF86AF;
+    --alert-soft:#411A2C;
+    --ok:#83D8A0;
+    --ok-soft:#173727;
+    --warn:#F3BC55;
+    --warn-soft:#3A2D10;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1926;
+  --surface:#162636;
+  --ink:#E7EFF3;
+  --muted:#9FB2C0;
+  --line:#2A3E51;
+  --lagoon:#57C6CF;
+  --lagoon-soft:#143843;
+  --alert:#FF86AF;
+  --alert-soft:#411A2C;
+  --ok:#83D8A0;
+  --ok-soft:#173727;
+  --warn:#F3BC55;
+  --warn-soft:#3A2D10;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:400 16px/1.55 var(--font);font-optical-sizing:auto;
+  font-variant-numeric:tabular-nums;
+}
+main{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+a{color:var(--lagoon);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--lagoon);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4,p,ul,ol,dl{margin:0}
+h1{font-size:clamp(2.6rem,11vw,4.2rem);line-height:.95;font-weight:800;letter-spacing:-.035em}
+h2{font-size:1.75rem;line-height:1.1;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
+h3{font-size:1.25rem;line-height:1.2;font-weight:700;letter-spacing:-.01em}
+h4{font-size:1.02rem;line-height:1.3;font-weight:700}
+.lede{color:var(--muted);margin-top:10px;font-size:1.05rem}
+.section{margin-top:48px}
+.section>.sub{color:var(--muted);margin-bottom:18px;max-width:60ch}
+
+/* Hero */
+.hero .dates{margin-top:12px;font-size:1.25rem;font-weight:500}
+.strip{list-style:none;padding:0;margin:26px -16px 0;display:flex;gap:0;overflow-x:auto;padding:0 16px 10px;scrollbar-width:thin}
+.strip li{flex:0 0 auto;min-width:118px;padding:14px 12px 0 0;position:relative;border-top:3px solid var(--lagoon)}
+.strip li::before{content:"";position:absolute;top:-8px;left:0;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--lagoon)}
+.strip b{display:block;font-weight:700}
+.strip span{display:block;color:var(--muted);font-size:.9rem}
+.tz{margin-top:18px;padding:12px 14px;background:var(--lagoon-soft);border-radius:10px;font-size:.95rem}
+.jump{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-weight:500}
+
+/* Pills */
+.pill{display:inline-block;font-size:.82rem;font-weight:700;line-height:1;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.miss{background:var(--alert-soft);color:var(--alert)}
+.pill.chk{background:var(--warn-soft);color:var(--warn)}
+
+/* Pendientes */
+.progress{font-size:.95rem;color:var(--muted);margin-bottom:18px}
+.group{margin-top:26px}
+.group>h3{margin-bottom:10px}
+.todos{list-style:none;padding:0}
+.todo{
+  display:grid;grid-template-columns:28px 1fr;gap:12px;
+  background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--alert);
+  border-radius:12px;padding:14px 16px;margin-bottom:10px;
+}
+.todo.warn{border-left-color:var(--warn)}
+.todo.verify{border-left-color:var(--lagoon)}
+.todo p{margin-top:6px}
+.todo ul{margin:8px 0 0;padding-left:1.15rem}
+.todo li{margin:3px 0}
+.todo input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--lagoon)}
+.todo.done{opacity:.55}
+.todo.done h4{text-decoration:line-through}
+
+/* Route */
+.route{list-style:none;padding:0}
+.leg{position:relative;padding:0 0 26px 42px}
+.leg::before{content:"";position:absolute;left:10px;top:0;bottom:0;border-left:3px solid var(--lagoon)}
+.leg.hop::before{border-left-style:dashed}
+.leg.hop.missing::before{border-left-color:var(--alert)}
+.leg.stay::after{content:"";position:absolute;left:0;top:18px;width:24px;height:24px;border-radius:50%;background:var(--lagoon);border:4px solid var(--bg)}
+.leg.hop::after{content:"";position:absolute;left:4px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--lagoon)}
+.leg.hop.missing::after{border-color:var(--alert)}
+.leg:last-child{padding-bottom:0}
+.leg:last-child::before{bottom:auto;height:30px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card .when{color:var(--muted);font-size:.92rem;font-weight:500}
+.card .hotel{font-weight:500;margin-top:2px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 16px;margin-top:16px}
+.facts dt{color:var(--muted);font-size:.82rem}
+.facts dd{margin:0;font-weight:700}
+.card .status{margin-top:16px}
+.notes{margin:14px 0 0;padding-left:1.15rem}
+.notes li{margin:4px 0}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-weight:700;color:var(--lagoon)}
+details p{margin-top:8px}
+
+.hopbox{background:var(--lagoon-soft);border-radius:12px;padding:16px}
+.leg.missing .hopbox{background:var(--alert-soft)}
+.hopbox header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.hopbox .mode{font-size:.85rem;font-weight:700;color:var(--lagoon)}
+.leg.missing .hopbox .mode{color:var(--alert)}
+.hopbox>p{margin-top:8px}
+.steps{list-style:none;padding:0;margin-top:12px}
+.steps li{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:8px 0;border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+.steps time{font-weight:800}
+.steps small{display:block;color:var(--muted);margin-top:2px;font-size:.9rem}
+
+/* Ubicacion */
+.map{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.map .road{stroke:var(--muted);stroke-width:2.5;fill:none}
+.map .boat{stroke:var(--lagoon);stroke-width:2.5;stroke-dasharray:7 6;fill:none}
+.map .pt{fill:var(--lagoon);stroke:var(--surface);stroke-width:3}
+.map .port{fill:var(--surface);stroke:var(--muted);stroke-width:2.5}
+.map .ap{fill:var(--ink);stroke:var(--surface);stroke-width:2}
+.map text{fill:var(--ink);font:600 14px var(--font)}
+.map text.key{fill:var(--muted);font-weight:500;font-size:12.5px}
+.mapnote{color:var(--muted);font-size:.9rem;margin-top:8px}
+.loc{margin-top:14px}
+.loc .zone{margin-top:8px}
+.loc ul{margin:10px 0 0;padding-left:1.15rem}
+.loc li{margin:3px 0}
+.loc .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-weight:700}
+
+/* Calendario */
+.today-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative}
+.today-nav{display:flex;align-items:center;justify-content:center;gap:14px}
+.today-nav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:700 16px var(--font);cursor:pointer}
+.today-nav button:hover{background:var(--lagoon-soft)}
+.today-badge{font-size:.8rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--lagoon)}
+.today-date{text-align:center;color:var(--muted);font-size:.92rem;margin-top:8px}
+.today-title{text-align:center;font-size:1.3rem;font-weight:800;letter-spacing:-.01em;margin-top:4px}
+.today-lines{list-style:none;padding:0;margin:14px 0 0;max-width:46ch;margin-left:auto;margin-right:auto}
+.today-lines li{padding:6px 0;border-top:1px solid var(--line);font-size:.95rem}
+.today-lines li:first-child{border-top:none}
+.today-link{display:block;text-align:center;margin-top:14px;font-weight:700}
+
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:22px}
+.calhead{text-align:center;font-size:.78rem;font-weight:700;color:var(--muted);padding-bottom:4px}
+.daycell{
+  display:flex;flex-direction:column;gap:2px;
+  aspect-ratio:1/1;min-height:52px;padding:4px 5px;border-radius:8px;
+  text-decoration:none;color:var(--ink);
+  background:color-mix(in srgb, var(--zone,var(--muted)) 14%, var(--surface) 86%);
+  border:1px solid color-mix(in srgb, var(--zone,var(--muted)) 30%, var(--line) 70%);
+  border-left:4px solid var(--zone,var(--muted));
+}
+.daycell.blank{visibility:hidden}
+.daycell .dnum{font-weight:800;font-size:.85rem;line-height:1}
+.daycell .dlabel{font-size:.62rem;line-height:1.15;color:var(--muted);overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.daycell.istoday{outline:3px solid var(--lagoon);outline-offset:1px}
+.daycell.selected{box-shadow:0 0 0 2px var(--ink) inset}
+@media (min-width:480px){
+  .daycell{min-height:64px;padding:6px 7px}
+  .daycell .dnum{font-size:1rem}
+  .daycell .dlabel{font-size:.72rem}
+}
+
+.callegend{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.88rem;color:var(--muted)}
+.callegend li{display:flex;align-items:center;gap:7px}
+.callegend .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+
+/* Tables */
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.85rem;color:var(--muted);font-weight:700}
+tr:last-child td{border-bottom:0}
+
+.two{display:grid;gap:14px}
+@media (min-width:640px){.two{grid-template-columns:1fr 1fr}}
+footer{margin-top:56px;color:var(--muted);font-size:.9rem}
+footer p+p{margin-top:8px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.jump{display:none}.todo{break-inside:avoid}.card,.hopbox{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <h1>🌙 de 🍯 Angi y Cuye 💞</h1>
+  <p class="dates">11 al 31 de octubre de 2026</p>
+  <p class="lede">Diego y María Angélica. De Santiago a Sídney, Bali, Gili Trawangan, Nusa Penida y Bangkok, y de vuelta: 18 noches en 7 alojamientos.</p>
+
+  <ol class="strip" aria-label="Ruta">
+    <li><b>Sídney</b><span>12 a 14 oct</span><span>2 noches</span></li>
+    <li><b>Nusa Dua</b><span>14 a 17 oct</span><span>3 noches</span></li>
+    <li><b>Ubud</b><span>17 a 19 oct</span><span>2 noches</span></li>
+    <li><b>Gili Trawangan</b><span>19 a 22 oct</span><span>3 noches</span></li>
+    <li><b>Nusa Penida</b><span>22 a 24 oct</span><span>2 noches</span></li>
+    <li><b>Bangkok</b><span>24 a 27 oct</span><span>3 noches</span></li>
+    <li><b>Sídney</b><span>28 a 31 oct</span><span>3 noches</span></li>
+  </ol>
+
+  <p class="tz">Todas las horas son locales de cada ciudad. Santiago va en UTC-3, Sídney en UTC+11, Bali, Lombok y Nusa Penida en UTC+8, Bangkok en UTC+7. Los tiempos con ≈ son estimados sin tráfico atípico.</p>
+
+  <nav class="jump" aria-label="Secciones">
+    <a href="#calendario">Calendario</a>
+    <a href="#pendientes">Lo que falta</a>
+    <a href="#dia-a-dia">Día a día</a>
+    <a href="#hoteles">Hoteles</a>
+    <a href="#vuelos">Vuelos</a>
+    <a href="#plazos">Plazos</a>
+    <a href="#tramites">Trámites</a>
+  </nav>
+</header>
+
+<!-- ============ CALENDARIO ============ -->
+<section class="section" id="calendario">
+  <h2>Calendario del viaje</h2>
+  <p class="sub">Octubre de 2026 completo. Toca un día para ver el detalle más abajo. La tarjeta de arriba se ajusta sola al día real cuando abras esto durante el viaje.</p>
+
+  <div class="today-card" id="todayCard">
+    <div class="today-nav">
+      <button type="button" id="prevDay" aria-label="Día anterior">←</button>
+      <span class="today-badge" id="todayBadge">Hoy</span>
+      <button type="button" id="nextDay" aria-label="Día siguiente">→</button>
+    </div>
+    <p class="today-date" id="todayDate"></p>
+    <p class="today-title" id="todayTitle"></p>
+    <ul class="today-lines" id="todayLines"></ul>
+    <a class="today-link" id="todayLink" href="#dia-a-dia">Ver el tramo completo ↓</a>
+  </div>
+
+  <div class="calgrid" id="calGrid" role="grid" aria-label="Calendario de octubre de 2026">
+    <span class="calhead">Lun</span><span class="calhead">Mar</span><span class="calhead">Mié</span><span class="calhead">Jue</span><span class="calhead">Vie</span><span class="calhead">Sáb</span><span class="calhead">Dom</span>
+  </div>
+
+  <ul class="callegend">
+    <li><span class="dot" style="background:var(--muted)"></span>Antes de viajar / en vuelo</li>
+    <li><span class="dot" style="background:var(--lagoon)"></span>Sídney</li>
+    <li><span class="dot" style="background:#C98A1D"></span>Nusa Dua</li>
+    <li><span class="dot" style="background:#3F8F5F"></span>Ubud</li>
+    <li><span class="dot" style="background:#2E6FB0"></span>Gili Trawangan</li>
+    <li><span class="dot" style="background:#7A4FB0"></span>Nusa Penida</li>
+    <li><span class="dot" style="background:#C85A3A"></span>Bangkok</li>
+  </ul>
+</section>
+
+<!-- ============ PENDIENTES ============ -->
+<section class="section" id="pendientes">
+  <h2>Lo que falta resolver</h2>
+  <p class="sub">Ya tienes los 5 vuelos reservados. Lo que queda son los barcos, los traslados y algunos ajustes de horario. Marca cada punto cuando lo resuelvas; se guarda en este dispositivo.</p>
+  <p class="progress" id="progress" aria-live="polite"></p>
+
+  <div class="group">
+    <h3>Reservar</h3>
+    <ul class="todos">
+      <li class="todo warn">
+        <input type="checkbox" data-k="barcos" aria-label="Marcar resuelto: barcos">
+        <div>
+          <h4>Tres barcos rápidos en Indonesia</h4>
+          <ul>
+            <li>Lun 19 oct: Padangbai → Gili Trawangan, salida de mañana (≈08:00 a 09:30).</li>
+            <li>Jue 22 oct: Gili Trawangan → Nusa Penida, directo (salidas ≈11:00 a 14:10).</li>
+            <li>Sáb 24 oct: Nusa Penida → Sanur, saliendo entre ≈10:30 y 11:30 para estar en el aeropuerto ≈3 h antes de tu vuelo de las 16:55.</li>
+          </ul>
+          <p>Cada tramo depende del operador y del mar. Los horarios cambian por temporada: confírmalos al comprar.</p>
+        </div>
+      </li>
+      <li class="todo warn">
+        <input type="checkbox" data-k="traslados" aria-label="Marcar resuelto: traslados terrestres">
+        <div>
+          <h4>Traslados terrestres sin reservar</h4>
+          <ul>
+            <li>14 oct: aeropuerto de Denpasar → Grand Hyatt. En tu reserva solo pediste información del shuttle.</li>
+            <li>17 oct: Nusa Dua → Ubud.</li>
+            <li>19 oct: Ubud → puerto de Padangbai (salir ≈07:00).</li>
+            <li>22 y 24 oct: puerto de Nusa Penida ↔ hotel. Pregunta a Adiwana si te recogen.</li>
+            <li>24 oct: puerto de Sanur → aeropuerto de Denpasar.</li>
+            <li>27 oct: hotel de Bangkok → aeropuerto Suvarnabhumi.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="todo warn">
+        <input type="checkbox" data-k="pagos" aria-label="Marcar resuelto: pagos por transferencia">
+        <div>
+          <h4>Pagos por transferencia: Amora Ubud y Adiwana Warnakali</h4>
+          <p>Booking indica que estos dos alojamientos piden pago por transferencia bancaria antes de llegar y que te escribirán con las instrucciones. Revisa tu correo y confirma que ya pagaste. Ambas reservas son sin reembolso.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="group">
+    <h3>Verificar</h3>
+    <ul class="todos">
+      <li class="todo verify">
+        <input type="checkbox" data-k="horas-llegada" aria-label="Marcar resuelto: horas de llegada">
+        <div>
+          <h4>Horas de llegada que no calzan con el check-in</h4>
+          <ul>
+            <li>Grand Hyatt (14 oct): pediste 21:00 a 22:00, pero aterrizas a las 20:50. Con migración, llegarías ≈22:15 a 23:00.</li>
+            <li>Amora Ubud (17 oct): pediste 12:00 a 13:00; el check-in es desde 14:00.</li>
+            <li>Adiwana (22 oct): pediste 11:00 a 12:00; con el barco directo llegas ≈13:30 a 17:00.</li>
+            <li>Grande Centre Point Bangkok (24 oct): pediste 20:00 a 21:00, pero aterrizas a las 20:05. Con migración y traslado, llegarías ≈21:45 a 22:30. El hotel también pide coordinar el check-in por adelantado.</li>
+            <li>Vibe Darling Harbour (12 oct): aterrizas a las 06:50 y llegas al hotel ≈09:15 a 10:00, con check-in a las 15:00. Después de un vuelo de 15 h, pide check-in anticipado.</li>
+            <li>Vibe Sydney (28 oct): llegas por la mañana y el check-in es a las 15:00.</li>
+          </ul>
+          <p>Avísales por Booking o por teléfono y pide check-in anticipado o guardar las maletas.</p>
+        </div>
+      </li>
+      <li class="todo verify">
+        <input type="checkbox" data-k="tramites" aria-label="Marcar resuelto: trámites de entrada">
+        <div>
+          <h4>Trámites de entrada</h4>
+          <p>Indonesia y Tailandia piden formularios online con fechas específicas. Detalle en <a href="#tramites">Trámites</a>.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DIA A DIA ============ -->
+<section class="section" id="dia-a-dia">
+  <h2>Día a día</h2>
+  <p class="sub">Cada alojamiento (círculo lleno) y cada traslado entre ciudades (línea punteada). En rosado, lo que aún no está reservado.</p>
+
+  <ol class="route">
+
+    <!-- Ida -->
+    <li class="leg hop" id="leg-ida">
+      <section class="hopbox">
+        <header><span class="mode">Vuelo</span><h3>Santiago → Sídney, del 10 al 12 de octubre</h3><span class="pill ok">Vuelo reservado</span></header>
+        <p>Vuelo LA809 de LATAM, un solo vuelo sin escalas. Sale en la madrugada del domingo 11: tienes que estar en el aeropuerto la noche del sábado 10.</p>
+        <ol class="steps">
+          <li><time>≈22:30</time><span>Sábado 10 de octubre: estar en el aeropuerto de Santiago (SCL).<small>3 h antes del vuelo. Cada uno lleva 1 maleta de hasta 23 kg y 1 pieza de mano de hasta 12 kg, más un bolso pequeño.</small></span></li>
+          <li><time>01:35</time><span>Domingo 11: despega LA809, ≈15 h 15 min.<small>Asientos 13D y 13H.</small></span></li>
+          <li><time>06:50</time><span>Lunes 12: aterriza en Sídney (hora de Sídney, 14 h adelante de Santiago).</span></li>
+          <li><time>≈07:30 a 08:45</time><span>Migración, maletas y aduana.<small>Australia es estricta con alimentos y productos de origen animal o vegetal: decláralos.</small></span></li>
+          <li><time>≈09:15 a 10:00</time><span>Llegada al Vibe Hotel Sydney Darling Harbour.<small>Tren Airport Line hasta Town Hall y ≈5 min a pie, o ≈25 a 30 min en auto. El check-in es a las 15:00: pide check-in anticipado o guardar las maletas.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Sidney 1 -->
+    <li class="leg stay" id="leg-sydney1">
+      <article class="card">
+        <p class="when">Lun 12 a mié 14 oct, 2 noches</p>
+        <h3>Sídney</h3>
+        <p class="hotel">Vibe Hotel Sydney Darling Harbour</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 15:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 11:00</dd></div>
+          <div><dt>Reserva</dt><dd>5041.904.595</dd></div>
+          <div><dt>PIN</dt><dd>4903</dd></div>
+          <div><dt>Habitación</dt><dd>Cama doble grande, desayuno incluido</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$530 (AUD 746,20)</dd></div>
+        </dl>
+        <p class="status"><span class="pill ok">Cancelación gratis hasta el 10 oct, 23:59</span></p>
+        <ul class="notes">
+          <li>Al llegar te piden documento de identidad y tarjeta de crédito.</li>
+          <li>Pago con Visa, MasterCard o Amex: recargo de 1,2%.</li>
+          <li>Estacionamiento público cercano: AUD 50 por día.</li>
+        </ul>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>319 Sussex Street, Sídney 2000, Australia.<br>
+          <a href="tel:+61290608888">+61 2 9060 8888</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-33.87508,151.20417" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Sidney -> Bali -->
+    <li class="leg hop" id="leg-syd-bali">
+      <section class="hopbox">
+        <header><span class="mode">Vuelo y traslados</span><h3>Sídney → Bali, miércoles 14 de octubre</h3><span class="pill ok">Vuelo reservado</span></header>
+        <p>Vuelo QF43 de Qantas, sin escalas. En Bali el reloj retrocede 3 horas respecto a Sídney.</p>
+        <ol class="steps">
+          <li><time>11:00</time><span>Check-out en el hotel.<small>Si quieren pasear, pide guardar las maletas en recepción.</small></span></li>
+          <li><time>≈13:30</time><span>Salir hacia el aeropuerto.<small>≈25 a 35 min en auto. En tren: Airport Line desde Town Hall, ≈15 min.</small></span></li>
+          <li><time>14:20</time><span>Estar en el aeropuerto, Terminal 1.<small>3 h antes del vuelo. Qantas cierra el check-in internacional 60 min antes, a las 16:20.</small></span></li>
+          <li><time>17:20</time><span>Despega QF43 (Airbus A330, ≈6 h 30 min).</span></li>
+          <li><time>20:50</time><span>Aterriza en Denpasar, terminal internacional (hora de Bali).</span></li>
+          <li><time>≈21:00 a 22:00</time><span>Migración y maletas.<small>Con e-VOA aprobado y tarjeta All Indonesia, ≈30 min. Sin e-VOA, la fila de visa puede tomar 30 a 90 min.</small></span></li>
+          <li><time>≈22:15 a 23:00</time><span>Llegada al Grand Hyatt Bali.<small>≈25 a 40 min en auto desde el aeropuerto. Falta reservar el chofer o el shuttle.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Nusa Dua -->
+    <li class="leg stay" id="leg-nusadua">
+      <article class="card">
+        <p class="when">Mié 14 a sáb 17 oct, 3 noches</p>
+        <h3>Nusa Dua, Bali</h3>
+        <p class="hotel">Grand Hyatt Bali</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 15:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 12:00</dd></div>
+          <div><dt>Reserva</dt><dd>5924.929.037</dd></div>
+          <div><dt>PIN</dt><dd>6690</dd></div>
+          <div><dt>Habitación</dt><dd>Cama extragrande, vista al jardín, sin comidas</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$555 (Rp 9.841.389)</dd></div>
+        </dl>
+        <p class="status"><span class="pill miss">Sin reembolso</span></p>
+        <ul class="notes">
+          <li>En la reserva pediste información del shuttle desde el aeropuerto; no hay confirmación.</li>
+          <li>Estacionamiento privado gratis.</li>
+        </ul>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>Kawasan Wisata Nusa Dua BTDC, Bali 80363, Indonesia.<br>
+          <a href="tel:+6281574494781">+62 815 7449 4781</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-8.80312,115.23105" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Nusa Dua -> Ubud -->
+    <li class="leg hop missing" id="leg-nusadua-ubud">
+      <section class="hopbox">
+        <header><span class="mode">Auto</span><h3>Nusa Dua → Ubud, sábado 17 de octubre</h3><span class="pill miss">Falta reservar</span></header>
+        <ol class="steps">
+          <li><time>12:00</time><span>Check-out en el Grand Hyatt.</span></li>
+          <li><time>≈12:30</time><span>Salir en auto privado.<small>≈1 h 15 min a 1 h 45 min (≈45 km), según el tráfico.</small></span></li>
+          <li><time>≈14:00</time><span>Check-in en Amora Ubud, desde las 14:00.<small>Tu solicitud dice 12:00 a 13:00: si llegas antes, pide check-in anticipado o deja las maletas.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Ubud -->
+    <li class="leg stay" id="leg-ubud">
+      <article class="card">
+        <p class="when">Sáb 17 a lun 19 oct, 2 noches</p>
+        <h3>Ubud</h3>
+        <p class="hotel">Amora Ubud Boutique Villas</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 14:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 12:00</dd></div>
+          <div><dt>Reserva</dt><dd>6546.157.408</dd></div>
+          <div><dt>PIN</dt><dd>5893</dd></div>
+          <div><dt>Habitación</dt><dd>Villa de un dormitorio con piscina privada, desayuno incluido</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$512 (Rp 9.083.340)</dd></div>
+        </dl>
+        <p class="status"><span class="pill miss">Sin reembolso</span></p>
+        <ul class="notes">
+          <li>Pago por transferencia bancaria antes de llegar. El hotel te contacta con las instrucciones.</li>
+          <li>Estacionamiento privado gratis.</li>
+        </ul>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>Jalan Bangkiang Sidem, Ubud 80571, Indonesia.<br>
+          <a href="tel:+6281999119595">+62 819 9911 9595</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-8.49308,115.25712" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Ubud -> Gili T -->
+    <li class="leg hop missing" id="leg-ubud-gili">
+      <section class="hopbox">
+        <header><span class="mode">Auto y barco rápido</span><h3>Ubud → Gili Trawangan, lunes 19 de octubre</h3><span class="pill miss">Falta reservar</span></header>
+        <p>Ruta por Padangbai. Elige un barco de la mañana: son los más fiables y llegas antes del check-in.</p>
+        <ol class="steps">
+          <li><time>≈07:00</time><span>Salir de Amora en auto hacia Padangbai.<small>≈1 h 15 min a 1 h 30 min (≈50 km). Puedes hacer el check-out antes de las 12:00.</small></span></li>
+          <li><time>≈08:30</time><span>Estar en el puerto de Padangbai.<small>Presentarse 30 a 60 min antes de la salida. Puede haber una tasa portuaria en efectivo.</small></span></li>
+          <li><time>≈09:00 a 09:30</time><span>Barco rápido a Gili Trawangan.<small>≈1 h 30 min a 2 h. Hay salidas desde ≈08:00 hasta ≈16:00.</small></span></li>
+          <li><time>≈11:00 a 11:30</time><span>Llegada a Gili T.<small>No hay autos ni motos: se camina, se usa bicicleta o cidomo (carruaje de caballo). El check-in en Pearl of Trawangan es desde las 14:00; pide guardar las maletas.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Gili T -->
+    <li class="leg stay" id="leg-gili">
+      <article class="card">
+        <p class="when">Lun 19 a jue 22 oct, 3 noches</p>
+        <h3>Gili Trawangan</h3>
+        <p class="hotel">Pearl of Trawangan</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 14:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 12:00</dd></div>
+          <div><dt>Reserva</dt><dd>6946.598.705</dd></div>
+          <div><dt>PIN</dt><dd>0691</dd></div>
+          <div><dt>Habitación</dt><dd>Doble Superior Suar, cama extragrande, planta baja, desayuno incluido</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$276 (Rp 4.894.020)</dd></div>
+        </dl>
+        <p class="status"><span class="pill miss">Sin reembolso</span></p>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>Gili Trawangan Island, 83355 Gili Trawangan, Indonesia.<br>
+          <a href="tel:+628113979990">+62 811 3979 990</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-8.35968,116.04052" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Gili T -> Nusa Penida -->
+    <li class="leg hop missing" id="leg-gili-penida">
+      <section class="hopbox">
+        <header><span class="mode">Barco rápido</span><h3>Gili Trawangan → Nusa Penida, jueves 22 de octubre</h3><span class="pill miss">Falta reservar</span></header>
+        <p>Hay barcos directos de varios operadores. Duran de ≈1 h 30 min a ≈3 h 30 min según el operador y suelen salir con retraso.</p>
+        <ol class="steps">
+          <li><time>12:00</time><span>Check-out en Pearl of Trawangan (o antes, según tu barco).</span></li>
+          <li><time>≈11:00 a 14:10</time><span>Salida del barco directo.<small>Elige la más temprana. Llega al puerto 30 min antes. El puerto de llegada depende del operador (Sampalan, Toya Pakeh o Buyuk).</small></span></li>
+          <li><time>≈13:30 a 17:00</time><span>Llegada a Nusa Penida y traslado al hotel.<small>Check-in en Adiwana desde las 14:00. Queda a ≈15 min del puerto de Toya Pakeh, por un camino empinado: pide que te recojan. Tu solicitud dice 11:00 a 12:00: actualízala.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Nusa Penida -->
+    <li class="leg stay" id="leg-penida">
+      <article class="card">
+        <p class="when">Jue 22 a sáb 24 oct, 2 noches</p>
+        <h3>Nusa Penida</h3>
+        <p class="hotel">Adiwana Warnakali Resort</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 14:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 12:00</dd></div>
+          <div><dt>Reserva</dt><dd>6546.165.749</dd></div>
+          <div><dt>PIN</dt><dd>1617</dd></div>
+          <div><dt>Habitación</dt><dd>Grand Deluxe vista al mar con té de la tarde, desayuno incluido</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$267 (Rp 4.738.500)</dd></div>
+        </dl>
+        <p class="status"><span class="pill miss">Sin reembolso</span></p>
+        <ul class="notes">
+          <li>Pago por transferencia bancaria antes de llegar. El hotel te contacta con las instrucciones.</li>
+        </ul>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>Sakti, Nusa Penida 80771, Indonesia.<br>
+          <a href="tel:+6281237755661">+62 812 3775 5661</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-8.68445,115.48318" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Nusa Penida -> Bangkok -->
+    <li class="leg hop" id="leg-penida-bkk">
+      <section class="hopbox">
+        <header><span class="mode">Barco, auto y vuelo</span><h3>Nusa Penida → Bangkok, sábado 24 de octubre</h3><span class="pill ok">Vuelo reservado</span></header>
+        <p>Vuelo TG432 de Thai Airways, sin escalas. Bangkok va 1 h atrás de Bali. Falta reservar el barco y los traslados.</p>
+        <ol class="steps">
+          <li><time>≈10:30</time><span>Salir del hotel hacia el puerto.<small>≈15 min hasta el puerto de Toya Pakeh; más si tu barco sale de otro puerto. Puedes hacer el check-out antes de las 12:00.</small></span></li>
+          <li><time>≈11:00 a 11:30</time><span>Barco rápido Nusa Penida → Sanur.<small>≈45 min a 1 h. Falta reservar. No lo tomes después de las 12:00: el mar puede retrasarlo.</small></span></li>
+          <li><time>≈+40 min</time><span>Auto de Sanur al aeropuerto de Denpasar.<small>≈30 a 40 min.</small></span></li>
+          <li><time>≈13:00 a 13:55</time><span>Estar en el aeropuerto, Terminal I.<small>3 h antes del vuelo. 1 maleta de 23 kg por persona.</small></span></li>
+          <li><time>16:55</time><span>Despega TG432, ≈4 h 10 min.</span></li>
+          <li><time>20:05</time><span>Aterriza en Bangkok, Suvarnabhumi (hora de Bangkok).</span></li>
+          <li><time>≈21:00</time><span>Migración y maletas.<small>Ten el código QR del TDAC guardado sin conexión.</small></span></li>
+          <li><time>≈21:45 a 22:30</time><span>Llegada al hotel de Bangkok.<small>Taxi o Grab, ≈45 a 60 min. Actualiza la hora de llegada en Booking: dice 20:00 a 21:00.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Bangkok -->
+    <li class="leg stay" id="leg-bangkok">
+      <article class="card">
+        <p class="when">Sáb 24 a mar 27 oct, 3 noches</p>
+        <h3>Bangkok</h3>
+        <p class="hotel">Grande Centre Point Hotel Ratchadamri Bangkok</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 14:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 12:00</dd></div>
+          <div><dt>Reserva</dt><dd>6546.141.467</dd></div>
+          <div><dt>PIN</dt><dd>7614</dd></div>
+          <div><dt>Habitación</dt><dd>Suite Grand con cocina y lavadora, desayuno incluido</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$480 (THB 16.022,16)</dd></div>
+        </dl>
+        <p class="status"><span class="pill ok">Cancelación gratis hasta el 20 oct, 23:59</span></p>
+        <ul class="notes">
+          <li>Al llegar presenta la misma tarjeta con que se garantizó la reserva. El titular debe coincidir con el documento del huésped.</li>
+          <li>Depósito reembolsable de THB 1.000 por noche y depósito por daños de THB 2.000 (≈US$59), devuelto 14 días después del check-out.</li>
+          <li>Estacionamiento privado gratis.</li>
+        </ul>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>153/2 Soi Mahatlek Luang 1, Ratchadamri Road, Lumpini, Pathumwan, Bangkok 10330, Tailandia.<br>
+          <a href="tel:+6620919000">+66 2 091 9000</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=13.74165,100.54097" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Bangkok -> Sidney -->
+    <li class="leg hop" id="leg-bkk-syd">
+      <section class="hopbox">
+        <header><span class="mode">Traslado y vuelo</span><h3>Bangkok → Sídney, martes 27 de octubre</h3><span class="pill ok">Vuelo reservado</span></header>
+        <p>Vuelo EK5151, operado por Qantas como QF24. Es un vuelo nocturno: llegas a Sídney el miércoles 28.</p>
+        <ol class="steps">
+          <li><time>12:00</time><span>Check-out en el hotel.</span></li>
+          <li><time>≈13:00</time><span>Salir hacia el aeropuerto Suvarnabhumi (BKK).<small>En taxi o Grab, ≈45 a 70 min (≈35 km) según el tráfico. Alternativa: BTS hasta Phaya Thai (cambio en Siam) y Airport Rail Link, ≈50 min con transbordos.</small></span></li>
+          <li><time>15:00</time><span>Abre el check-in, según tu ticket.<small>Mostradores de Qantas. Equipaje facturado: 25 kg.</small></span></li>
+          <li><time>18:00</time><span>Despega.</span></li>
+          <li><time>07:35 (mié 28)</time><span>Aterriza en Sídney, Terminal 1 internacional.</span></li>
+          <li><time>≈09:00 a 10:00</time><span>Llegada al Vibe Hotel Sydney.<small>Tren Airport Line hasta Museum y ≈3 min a pie, o ≈25 min en auto. El check-in es a las 15:00: pide check-in anticipado o guardar las maletas.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+    <!-- Sidney 2 -->
+    <li class="leg stay" id="leg-sydney2">
+      <article class="card">
+        <p class="when">Mié 28 a sáb 31 oct, 3 noches</p>
+        <h3>Sídney</h3>
+        <p class="hotel">Vibe Hotel Sydney</p>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>desde 15:00</dd></div>
+          <div><dt>Check-out</dt><dd>hasta 11:00</dd></div>
+          <div><dt>Reserva</dt><dd>5090.510.286</dd></div>
+          <div><dt>PIN</dt><dd>1256</dd></div>
+          <div><dt>Habitación</dt><dd>Doble Vibe, 1 cama extragrande o 2 individuales, desayuno incluido</dd></div>
+          <div><dt>Precio</dt><dd>≈ US$943 (AUD 1.325,97)</dd></div>
+        </dl>
+        <p class="status"><span class="pill ok">Cancelación gratis hasta el 26 oct, 23:59</span></p>
+        <ul class="notes">
+          <li>Depósito por daños de AUD 100 con tarjeta al llegar (≈US$71), devuelto 14 días después del check-out.</li>
+          <li>Pago con tarjeta de crédito: recargo de 1,5%.</li>
+          <li>Documento de identidad y tarjeta de crédito en el check-in.</li>
+        </ul>
+        <details>
+          <summary>Dirección y contacto</summary>
+          <p>111 Goulburn Street, Sídney 2000, Australia.<br>
+          <a href="tel:+61282723300">+61 2 8272 3300</a><br>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=-33.87855,151.20952" target="_blank" rel="noopener">Abrir en mapas</a></p>
+        </details>
+      </article>
+    </li>
+
+    <!-- Regreso -->
+    <li class="leg hop" id="leg-regreso">
+      <section class="hopbox">
+        <header><span class="mode">Traslado y vuelo</span><h3>Sídney → Santiago, sábado 31 de octubre</h3><span class="pill ok">Vuelo reservado</span></header>
+        <p>Vuelo LA810 de LATAM, sin escalas. Sale a las 11:10, antes del check-out de las 11:00: deja el hotel temprano.</p>
+        <ol class="steps">
+          <li><time>≈07:30</time><span>Salir del hotel hacia el aeropuerto.<small>≈25 a 35 min en auto, o ≈15 min en tren Airport Line desde Museum. Haz el check-out antes de salir.</small></span></li>
+          <li><time>08:10</time><span>Estar en el aeropuerto internacional.<small>3 h antes del vuelo. 1 maleta de hasta 23 kg por persona.</small></span></li>
+          <li><time>11:10</time><span>Despega LA810, ≈12 h 45 min.<small>Asientos 13D y 13H.</small></span></li>
+          <li><time>09:55</time><span>Aterriza en Santiago el mismo sábado 31.<small>El reloj retrocede 14 h, por eso llegas antes de la hora de salida.</small></span></li>
+        </ol>
+      </section>
+    </li>
+
+  </ol>
+</section>
+
+<!-- ============ HOTELES ============ -->
+<section class="section" id="hoteles">
+  <h2>Dónde queda cada hotel</h2>
+  <p class="sub">Zona, dirección y qué hay cerca. Las distancias y los tiempos son aproximados y salen de los datos de cada alojamiento.</p>
+
+  <figure style="margin:0">
+    <svg class="map" viewBox="0 0 640 416" role="img" aria-label="Esquema de Bali, Nusa Penida y Gili Trawangan con la posición de cada hotel">
+      <path class="road" d="M43 300 L84 335 L100 136 L260 159"/>
+      <path class="road" d="M104 262 L43 300"/>
+      <path class="boat" d="M260 159 L602 51"/>
+      <path class="boat" d="M602 51 L245 259"/>
+      <path class="boat" d="M245 259 L104 262"/>
+      <circle class="ap" cx="43" cy="300" r="6"/>
+      <circle class="port" cx="104" cy="262" r="6"/>
+      <circle class="port" cx="260" cy="159" r="6"/>
+      <circle class="pt" cx="84" cy="335" r="9"/>
+      <circle class="pt" cx="100" cy="136" r="9"/>
+      <circle class="pt" cx="602" cy="51" r="9"/>
+      <circle class="pt" cx="245" cy="259" r="9"/>
+      <text x="33" y="304" text-anchor="end">DPS</text>
+      <text x="98" y="246">Sanur</text>
+      <text x="96" y="356">Nusa Dua, Grand Hyatt</text>
+      <text x="100" y="116">Ubud, Amora</text>
+      <text x="250" y="184">Padangbai</text>
+      <text x="200" y="290">Nusa Penida, Adiwana</text>
+      <text x="588" y="42" text-anchor="end">Gili Trawangan, Pearl</text>
+      <line class="road" x1="380" y1="388" x2="410" y2="388"/>
+      <text class="key" x="416" y="392">Auto</text>
+      <line class="boat" x1="470" y1="388" x2="500" y2="388"/>
+      <text class="key" x="506" y="392">Barco</text>
+      <text class="key" x="380" y="410">DPS es el aeropuerto de Denpasar</text>
+    </svg>
+    <figcaption class="mapnote">Esquema con las coordenadas reales de cada hotel. Las líneas son rectas: no muestran la costa ni las rutas verdaderas.</figcaption>
+  </figure>
+
+  <article class="card loc">
+    <p class="when">Lun 12 a mié 14 oct</p>
+    <h3>Vibe Hotel Sydney Darling Harbour</h3>
+    <p class="zone">Centro de Sídney, entre Chinatown y Darling Harbour. 319 Sussex Street, Sídney 2000.</p>
+    <ul>
+      <li>Estación Town Hall (tren): ≈5 min a pie.</li>
+      <li>Centro de convenciones ICC y World Square: ≈3 min a pie. Hyde Park: ≈7 min. SEA LIFE Aquarium: ≈9 min.</li>
+      <li>Circular Quay y Ópera de Sídney: ≈3 min en auto (≈2,5 km).</li>
+      <li>Aeropuerto de Sídney: ≈24 a 26 min en auto.</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=-33.87508,151.20417" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=-33.87508,151.20417&amp;q=Vibe%20Hotel%20Sydney%20Darling%20Harbour" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+
+  <article class="card loc">
+    <p class="when">Mié 14 a sáb 17 oct</p>
+    <h3>Grand Hyatt Bali</h3>
+    <p class="zone">Nusa Dua, en el sur de Bali: un enclave de resorts frente a la playa. Kawasan Wisata Nusa Dua BTDC, 80363.</p>
+    <ul>
+      <li>Aeropuerto de Denpasar: ≈12 a 14 km, ≈20 a 25 min en auto.</li>
+      <li>Centro comercial Bali Collection (tiendas y restaurantes): ≈3 min a pie.</li>
+      <li>Nusa Dua tiene poco movimiento nocturno fuera de los resorts. Kuta y Legian quedan a ≈14 a 16 km.</li>
+      <li>Tu tarifa no incluye comidas.</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=-8.80312,115.23105" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=-8.80312,115.23105&amp;q=Grand%20Hyatt%20Bali" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+
+  <article class="card loc">
+    <p class="when">Sáb 17 a lun 19 oct</p>
+    <h3>Amora Ubud Boutique Villas</h3>
+    <p class="zone">En una colina al borde del valle del río Campuhan, en las afueras de Ubud. Jalan Bangkiang Sidem, 80571.</p>
+    <ul>
+      <li>Palacio y mercado de Ubud: ≈2 a 4 km, ≈7 a 10 min en auto. No es un lugar para ir a pie al centro.</li>
+      <li>Campuhan Ridge Walk: ≈2 km. Monkey Forest: ≈3 a 5 km.</li>
+      <li>Aeropuerto de Denpasar: ≈30 km, ≈1 h 30 min en auto según el tráfico.</li>
+      <li>Estacionamiento privado gratis. El hotel ofrece shuttle con costo.</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=-8.49308,115.25712" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=-8.49308,115.25712&amp;q=Amora%20Ubud%20Boutique%20Villas" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+
+  <article class="card loc">
+    <p class="when">Lun 19 a jue 22 oct</p>
+    <h3>Pearl of Trawangan</h3>
+    <p class="zone">Gili Trawangan, frente a la playa, a unos cientos de metros del paseo principal con restaurantes y bares. Gili Trawangan Island, 83355 (isla frente a la costa de Lombok).</p>
+    <ul>
+      <li>Terminal de barcos: ≈0,9 km, ≈10 min a pie.</li>
+      <li>Mercado tradicional y tiendas: ≈800 m.</li>
+      <li>La isla no tiene autos ni motos: se camina, se usa bicicleta o cidomo (carruaje de caballo).</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=-8.35968,116.04052" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=-8.35968,116.04052&amp;q=Pearl%20of%20Trawangan" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+
+  <article class="card loc">
+    <p class="when">Jue 22 a sáb 24 oct</p>
+    <h3>Adiwana Warnakali Resort</h3>
+    <p class="zone">Sakti, Nusa Penida: sobre un acantilado de la costa oeste, con vista a Nusa Ceningan y al monte Agung. Sakti, 80771.</p>
+    <ul>
+      <li>Puerto de Toya Pakeh: ≈15 min en auto. El camino de acceso es empinado y con baches, según reseñas; el hotel ayuda con las maletas.</li>
+      <li>Broken Beach queda a ≈14 km. Para recorrer la isla conviene contratar un conductor.</li>
+      <li>Tiene centro de buceo propio.</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=-8.68445,115.48318" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=-8.68445,115.48318&amp;q=Adiwana%20Warnakali%20Resort" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+
+  <article class="card loc">
+    <p class="when">Sáb 24 a mar 27 oct</p>
+    <h3>Grande Centre Point Hotel Ratchadamri</h3>
+    <p class="zone">Centro de Bangkok, distrito Pathumwan, zona de centros comerciales. 153/2 Soi Mahatlek Luang 1, Ratchadamri Road, 10330.</p>
+    <ul>
+      <li>BTS Ratchadamri: ≈4 a 5 min a pie. BTS Chit Lom: ≈8 a 9 min. BTS Siam: ≈13 min.</li>
+      <li>Santuario Erawan: ≈3 min a pie. CentralWorld: ≈5 min. Siam Square: ≈7 min. Siam Paragon: ≈10 min.</li>
+      <li>Aeropuerto Suvarnabhumi: ≈36 a 38 min en auto sin tráfico. Don Mueang: ≈32 min.</li>
+      <li>El hotel pide coordinar el check-in por adelantado. La recepción recibe hasta la medianoche.</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=13.74165,100.54097" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=13.74165,100.54097&amp;q=Grande%20Centre%20Point%20Hotel%20Ratchadamri" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+
+  <article class="card loc">
+    <p class="when">Mié 28 a sáb 31 oct</p>
+    <h3>Vibe Hotel Sydney</h3>
+    <p class="zone">Centro de Sídney, cerca de Hyde Park y Central. 111 Goulburn Street, Sídney 2000.</p>
+    <ul>
+      <li>Estación Museum (tren): ≈3 min a pie. Estación Central: ≈8 min.</li>
+      <li>Hyde Park y World Square: ≈3 min a pie. Town Hall y Queen Victoria Building: ≈9 min.</li>
+      <li>Darling Harbour: ≈900 m. Circular Quay: ≈2 km.</li>
+      <li>Aeropuerto de Sídney: ≈24 min en auto (≈8 km).</li>
+    </ul>
+    <p class="links"><a href="https://www.google.com/maps/search/?api=1&amp;query=-33.87855,151.20952" target="_blank" rel="noopener">Google Maps</a><a href="https://maps.apple.com/?ll=-33.87855,151.20952&amp;q=Vibe%20Hotel%20Sydney" target="_blank" rel="noopener">Apple Maps</a></p>
+  </article>
+</section>
+
+<!-- ============ VUELOS ============ -->
+<section class="section" id="vuelos">
+  <h2>Vuelos reservados</h2>
+  <p class="sub">Qantas pide llevar impreso (o guardado sin conexión) el itinerario de cada pasajero para migración, aduana y control de seguridad.</p>
+  <div class="two">
+    <article class="card">
+      <p class="when">Domingo 11 de octubre, madrugada</p>
+      <h3>LA809 Santiago → Sídney</h3>
+      <dl class="facts">
+        <div><dt>Reserva</dt><dd>ISHQSX</dd></div>
+        <div><dt>Salida</dt><dd>01:35, Santiago (SCL)</dd></div>
+        <div><dt>Llegada</dt><dd>06:50 del lun 12, hora de Sídney</dd></div>
+        <div><dt>Duración</dt><dd>≈15 h 15 min, sin escalas</dd></div>
+        <div><dt>Pasajeros</dt><dd>Diego Covarrubias, María Marín</dd></div>
+        <div><dt>Asientos</dt><dd>13D y 13H</dd></div>
+        <div><dt>Tarifa</dt><dd>Economy Full</dd></div>
+        <div><dt>Equipaje</dt><dd>1 pieza de 23 kg c/u</dd></div>
+      </dl>
+      <p class="notes" style="padding-left:0">Mano: 1 pieza de hasta 12 kg (55 x 35 x 25 cm) y 1 bolso pequeño (45 x 35 x 20 cm). Economy Full permite cambios sin multa antes del vuelo y devolución del 100% antes de la salida del primer vuelo. Si querían sentarse juntos, revisa en Mis viajes cómo quedaron 13D y 13H.</p>
+    </article>
+    <article class="card">
+      <p class="when">Miércoles 14 de octubre</p>
+      <h3>QF43 Sídney → Denpasar</h3>
+      <dl class="facts">
+        <div><dt>Reserva</dt><dd>DNQCSL</dd></div>
+        <div><dt>Salida</dt><dd>17:20, Terminal 1</dd></div>
+        <div><dt>Llegada</dt><dd>20:50, hora de Bali</dd></div>
+        <div><dt>Tarifa</dt><dd>Economy Sale, sin escalas</dd></div>
+        <div><dt>Diego Covarrubias</dt><dd>Ticket 081-2382628530</dd></div>
+        <div><dt>María Angélica Marín</dt><dd>Ticket 081-2382628529</dd></div>
+        <div><dt>Total</dt><dd>AUD 654,18 (ambos)</dd></div>
+        <div><dt>Equipaje</dt><dd>30 kg según la tabla del PDF</dd></div>
+      </dl>
+      <p class="notes" style="padding-left:0">Diego tiene Frequent Flyer QF 2013758095 (Bronze). Confirma el equipaje en Manage Booking: el ticket no lo detalla.</p>
+    </article>
+    <article class="card">
+      <p class="when">Sábado 24 de octubre</p>
+      <h3>TG432 Denpasar → Bangkok</h3>
+      <dl class="facts">
+        <div><dt>Reserva</dt><dd>E7FDGY</dd></div>
+        <div><dt>Salida</dt><dd>16:55, Terminal I</dd></div>
+        <div><dt>Llegada</dt><dd>20:05, Suvarnabhumi</dd></div>
+        <div><dt>Duración</dt><dd>4 h 10 min, sin escalas</dd></div>
+        <div><dt>Diego Covarrubias</dt><dd>Ticket 217 2347633771</dd></div>
+        <div><dt>María Angélica Marín</dt><dd>Ticket 217 2347633772</dd></div>
+        <div><dt>Tarifa</dt><dd>Economy, IDR 4.294.800 c/u</dd></div>
+        <div><dt>Equipaje</dt><dd>1 pieza de 23 kg c/u</dd></div>
+      </dl>
+      <p class="notes" style="padding-left:0">Lleva identificación con foto. La tarifa no permite endoso y los cambios o la cancelación dependen de las reglas de la tarifa: no conviene arriesgarse a perder este vuelo. Cada maleta no puede pasar de 158 cm en total.</p>
+    </article>
+    <article class="card">
+      <p class="when">Martes 27 de octubre</p>
+      <h3>EK5151 / QF24 Bangkok → Sídney</h3>
+      <dl class="facts">
+        <div><dt>Reserva</dt><dd>DWM5WJ</dd></div>
+        <div><dt>Check-in</dt><dd>15:00</dd></div>
+        <div><dt>Salida</dt><dd>18:00, BKK</dd></div>
+        <div><dt>Llegada</dt><dd>07:35 del mié 28, Terminal 1</dd></div>
+        <div><dt>Diego Covarrubias</dt><dd>Ticket 176 2205947309</dd></div>
+        <div><dt>María Angélica Marín</dt><dd>Ticket 176 2205947310</dd></div>
+        <div><dt>Tarifa</dt><dd>Economy Saver, THB 14.790 c/u</dd></div>
+        <div><dt>Equipaje</dt><dd>25 kg c/u</dd></div>
+      </dl>
+      <p class="notes" style="padding-left:0">Ambos tickets están en la misma reserva. No aparece asiento asignado en ninguno: puedes elegirlo en el check-in online.</p>
+    </article>
+    <article class="card">
+      <p class="when">Sábado 31 de octubre</p>
+      <h3>LA810 Sídney → Santiago</h3>
+      <dl class="facts">
+        <div><dt>Reserva</dt><dd>ISHQSX</dd></div>
+        <div><dt>Salida</dt><dd>11:10, Sídney</dd></div>
+        <div><dt>Llegada</dt><dd>09:55 del mismo día, hora de Santiago</dd></div>
+        <div><dt>Duración</dt><dd>≈12 h 45 min, sin escalas</dd></div>
+        <div><dt>Pasajeros</dt><dd>Diego Covarrubias, María Marín</dd></div>
+        <div><dt>Asientos</dt><dd>13D y 13H</dd></div>
+        <div><dt>Tarifa</dt><dd>Economy Full</dd></div>
+        <div><dt>Equipaje</dt><dd>1 pieza de 23 kg c/u</dd></div>
+      </dl>
+      <p class="notes" style="padding-left:0">El comprobante de LATAM cubre los dos vuelos y los asientos: CLP 3.499.106 en total. Sale antes del check-out del hotel, así que deja el hotel a las ≈07:30.</p>
+    </article>
+  </div>
+  <h3 style="margin-top:26px">Equipaje facturado por tramo</h3>
+  <p class="sub" style="margin:6px 0 12px">El límite más bajo es 23 kg por maleta. Empaca con ese número para todo el viaje.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Tramo</th><th>Fecha</th><th>Facturado por persona</th></tr></thead>
+      <tbody>
+        <tr><td>LA809 Santiago → Sídney</td><td>11 oct</td><td>1 pieza, 23 kg</td></tr>
+        <tr><td>QF43 Sídney → Denpasar</td><td>14 oct</td><td>30 kg según la tabla de Qantas. Confírmalo en Manage Booking.</td></tr>
+        <tr><td>TG432 Denpasar → Bangkok</td><td>24 oct</td><td>1 pieza, 23 kg</td></tr>
+        <tr><td>EK5151 / QF24 Bangkok → Sídney</td><td>27 oct</td><td>25 kg</td></tr>
+        <tr><td>LA810 Sídney → Santiago</td><td>31 oct</td><td>1 pieza, 23 kg</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ PLAZOS ============ -->
+<section class="section" id="plazos">
+  <h2>Plazos y reembolsos</h2>
+  <p class="sub">Solo 3 de los 7 alojamientos se pueden cancelar gratis. Incluso cancelando a tiempo, el hotel puede cobrar impuestos.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Alojamiento</th><th>Cancelación</th></tr></thead>
+      <tbody>
+        <tr><td>Vibe Darling Harbour, Sídney</td><td>Gratis hasta el 10 oct, 23:59. Desde el 11, sin reembolso.</td></tr>
+        <tr><td>Grand Hyatt Bali</td><td>Sin reembolso.</td></tr>
+        <tr><td>Amora Ubud</td><td>Sin reembolso.</td></tr>
+        <tr><td>Pearl of Trawangan</td><td>Sin reembolso.</td></tr>
+        <tr><td>Adiwana Warnakali</td><td>Sin reembolso.</td></tr>
+        <tr><td>Grande Centre Point, Bangkok</td><td>Gratis hasta el 20 oct, 23:59. Desde el 21, sin reembolso.</td></tr>
+        <tr><td>Vibe Hotel Sydney</td><td>Gratis hasta el 26 oct, 23:59. Desde el 27, sin reembolso.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sub" style="margin-top:14px">Total de alojamiento: ≈ US$3.563, según los precios de Booking.</p>
+</section>
+
+<!-- ============ TRAMITES ============ -->
+<section class="section" id="tramites">
+  <h2>Trámites de entrada</h2>
+  <p class="sub">Requisitos vigentes al 19 de septiembre de 2026. Verifica en los sitios oficiales según tu pasaporte antes de viajar.</p>
+  <div class="two">
+    <article class="card">
+      <h3>Indonesia, desde el 14 oct</h3>
+      <ul class="notes">
+        <li>Visa: e-VOA en evisa.imigrasi.go.id (IDR 500.000 por persona) o visa on arrival en el aeropuerto, con fila.</li>
+        <li>Tarjeta All Indonesia, gratis, hasta 72 h antes: desde el 11 de octubre en allindonesia.imigrasi.go.id.</li>
+        <li>Tasa turística de Bali: IDR 150.000 por persona, en el portal Love Bali. Guarda el comprobante.</li>
+        <li>Pasaporte con 6 meses de vigencia y comprobante de salida: tu TG432 del 24 oct sirve.</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Tailandia, desde el 24 oct</h3>
+      <ul class="notes">
+        <li>Tarjeta digital de llegada TDAC, gratis, en tdac.immigration.go.th. Solo se acepta desde 72 h antes: del 21 al 24 de octubre.</li>
+        <li>Guarda el código QR sin conexión. Cualquier sitio que cobre por el TDAC es ajeno al oficial.</li>
+        <li>Pasaporte con 6 meses de vigencia.</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Australia, dos entradas</h3>
+      <ul class="notes">
+        <li>Entras el 12 de octubre y de nuevo el 28. Los sitios no oficiales se contradicen sobre qué permiso necesita un pasaporte chileno (eVisitor, ETA o visa 600): confírmalo en immi.homeaffairs.gov.au y verifica que cubra las dos entradas.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <p>Los horarios de barcos y vuelos cambian: confírmalos antes de salir. Los tiempos de traslado son estimados.</p>
+  <p>Los PDFs de Grand Hyatt, Adiwana y Amora traen avisos de COVID, Nyepi 2020 y cierres de restaurantes de 2021. Son textos antiguos de Booking y no aplican a este viaje.</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var KEY = "luna-de-miel-2026-checks";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+  var boxes = document.querySelectorAll("input[data-k]");
+  function paint(cb){ cb.closest(".todo").classList.toggle("done", cb.checked); }
+  function count(){
+    var n = 0;
+    boxes.forEach(function(c){ if (c.checked) n++; });
+    document.getElementById("progress").textContent = n + " de " + boxes.length + " resueltos";
+  }
+  boxes.forEach(function(cb){
+    cb.checked = !!state[cb.getAttribute("data-k")];
+    paint(cb);
+    cb.addEventListener("change", function(){
+      state[cb.getAttribute("data-k")] = cb.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+      paint(cb);
+      count();
+    });
+  });
+  count();
+})();
+</script>
+
+<script>
+(function(){
+  var ZONES = {
+    prep:  "var(--muted)",
+    syd:   "var(--lagoon)",
+    bali:  "#C98A1D",
+    ubud:  "#3F8F5F",
+    gili:  "#2E6FB0",
+    penida:"#7A4FB0",
+    bkk:   "#C85A3A"
+  };
+
+  // Un registro por cada día de octubre de 2026.
+  var DAYS = [
+    ["2026-10-01","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes.","Revisa la sección “Lo que falta” de esta página."],"pendientes"],
+    ["2026-10-02","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-03","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-04","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-05","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-06","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-07","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-08","prep","Antes de viajar","Antes de viajar",["Reserva lo que falta: barcos, traslados y pagos pendientes."],"pendientes"],
+    ["2026-10-09","prep","Antes de viajar","Antes de viajar",["Faltan 2 días. Confirma trámites de Indonesia, Tailandia y Australia."],"tramites"],
+    ["2026-10-10","prep","Último día en Santiago","Último día en Santiago",["Arma las maletas: máx. 23 kg facturados por persona.","Sal hacia el aeropuerto SCL cerca de las 22:30.","Vuelo LA809 despega 01:35 del domingo 11."],"leg-ida"],
+    ["2026-10-11","prep","En vuelo a Sídney","En vuelo a Sídney",["LA809 Santiago → Sídney, salida 01:35.","Llega 06:50 del lunes 12 (hora de Sídney).","Asientos 13D y 13H."],"leg-ida"],
+    ["2026-10-12","syd","Llegada a Sídney","Llegada a Sídney",["Aterriza 06:50 · migración y aduana ≈1 h.","Check-in Vibe Darling Harbour desde las 15:00.","Vienes de 15 h de vuelo: pide check-in anticipado."],"leg-sydney1"],
+    ["2026-10-13","syd","Sídney","Sídney",["Día libre en el centro.","Hotel: Vibe Darling Harbour, 319 Sussex Street."],"leg-sydney1"],
+    ["2026-10-14","bali","Sídney → Bali","Sídney → Bali",["Check-out 11:00.","Vuelo QF43 despega 17:20, llega 20:50 a Denpasar.","Check-in Grand Hyatt Bali (falta el traslado)."],"leg-syd-bali"],
+    ["2026-10-15","bali","Nusa Dua","Nusa Dua",["Día libre frente a la playa.","Hotel: Grand Hyatt Bali."],"leg-nusadua"],
+    ["2026-10-16","bali","Nusa Dua","Nusa Dua",["Último día en Nusa Dua.","Prepara el traslado a Ubud de mañana (falta reservar)."],"leg-nusadua"],
+    ["2026-10-17","ubud","Nusa Dua → Ubud","Nusa Dua → Ubud",["Check-out 12:00.","Auto a Ubud, ≈1 h 15 a 1 h 45 min (falta reservar).","Check-in Amora Ubud desde las 14:00."],"leg-nusadua-ubud"],
+    ["2026-10-18","ubud","Ubud","Ubud",["Día libre en Ubud.","Hotel: Amora Ubud Boutique Villas."],"leg-ubud"],
+    ["2026-10-19","gili","Ubud → Gili Trawangan","Ubud → Gili T",["Salir ≈07:00 hacia Padangbai (falta el auto).","Barco rápido ≈09:00 a 09:30 (falta reservar).","Check-in Pearl of Trawangan desde las 14:00."],"leg-ubud-gili"],
+    ["2026-10-20","gili","Gili Trawangan","Gili Trawangan",["Isla sin autos: a pie, bici o cidomo.","Hotel: Pearl of Trawangan."],"leg-gili"],
+    ["2026-10-21","gili","Gili Trawangan","Gili Trawangan",["Último día completo en la isla.","Prepara el barco a Nusa Penida de mañana (falta reservar)."],"leg-gili"],
+    ["2026-10-22","penida","Gili T → Nusa Penida","Gili T → Penida",["Check-out 12:00.","Barco directo, salidas ≈11:00 a 14:10 (falta reservar).","Check-in Adiwana desde las 14:00, camino empinado."],"leg-gili-penida"],
+    ["2026-10-23","penida","Nusa Penida","Nusa Penida",["Día libre en Nusa Penida.","Hotel: Adiwana Warnakali Resort."],"leg-penida"],
+    ["2026-10-24","bkk","Nusa Penida → Bangkok","Penida → Bangkok",["Barco a Sanur ≈10:30 a 11:30 (falta reservar).","Auto a Denpasar, vuelo TG432 16:55 → 20:05.","Check-in Grande Centre Point ≈21:45 a 22:30."],"leg-penida-bkk"],
+    ["2026-10-25","bkk","Bangkok","Bangkok",["Día libre en el centro.","Hotel: Grande Centre Point Ratchadamri."],"leg-bangkok"],
+    ["2026-10-26","bkk","Bangkok","Bangkok",["Último día completo en Bangkok.","Prepara el vuelo nocturno de mañana."],"leg-bangkok"],
+    ["2026-10-27","prep","Bangkok → Sídney","Bangkok → Sídney",["Check-out 12:00, vuelo EK5151/QF24 despega 18:00.","Vuelo nocturno: llega 07:35 del miércoles 28.","Equipaje: 25 kg por persona."],"leg-bkk-syd"],
+    ["2026-10-28","syd","Llegada a Sídney","Llegada a Sídney",["Aterriza 07:35 · Terminal 1 internacional.","Check-in Vibe Hotel Sydney desde las 15:00.","111 Goulburn Street."],"leg-sydney2"],
+    ["2026-10-29","syd","Sídney","Sídney",["Día libre en el centro.","Hotel: Vibe Hotel Sydney."],"leg-sydney2"],
+    ["2026-10-30","syd","Sídney","Sídney",["Último día completo en Sídney.","Prepara el vuelo de regreso de mañana."],"leg-sydney2"],
+    ["2026-10-31","prep","Regreso a Santiago","Regreso a Santiago",["Check-out 11:00, antes de la salida del vuelo.","Vuelo LA810 despega 11:10, llega 09:55 a Santiago.","Fin del viaje."],"leg-regreso"]
+  ];
+
+  var WEEKDAYS = ["lunes","martes","miércoles","jueves","viernes","sábado","domingo"];
+  var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+  function keyOf(d){
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+
+  // Octubre de 2026 empieza en jueves: 3 celdas vacías antes del día 1.
+  var grid = document.getElementById("calGrid");
+  var cellsByKey = {};
+  for (var b = 0; b < 3; b++){
+    var blank = document.createElement("span");
+    blank.className = "daycell blank";
+    grid.appendChild(blank);
+  }
+  DAYS.forEach(function(row){
+    var key = row[0], zone = row[1], gridLabel = row[2];
+    var a = document.createElement("a");
+    a.className = "daycell";
+    a.style.setProperty("--zone", ZONES[zone]);
+    a.href = "#" + row[5];
+    var num = document.createElement("span");
+    num.className = "dnum";
+    num.textContent = String(parseInt(key.slice(8,10),10));
+    var lab = document.createElement("span");
+    lab.className = "dlabel";
+    lab.textContent = gridLabel;
+    a.appendChild(num);
+    a.appendChild(lab);
+    grid.appendChild(a);
+    cellsByKey[key] = a;
+  });
+
+  var todayKey = keyOf(new Date());
+  if (cellsByKey[todayKey]) cellsByKey[todayKey].classList.add("istoday");
+
+  var idx = DAYS.findIndex(function(r){ return r[0] === todayKey; });
+  if (idx < 0) idx = (todayKey < DAYS[0][0]) ? 9 : DAYS.length - 1; // antes del viaje: cae en el 10 oct; después: queda en el último día
+
+  var dateEl = document.getElementById("todayDate");
+  var titleEl = document.getElementById("todayTitle");
+  var linesEl = document.getElementById("todayLines");
+  var linkEl = document.getElementById("todayLink");
+  var badgeEl = document.getElementById("todayBadge");
+
+  function render(){
+    var row = DAYS[idx];
+    var d = new Date(row[0] + "T00:00:00");
+    dateEl.textContent = WEEKDAYS[(d.getDay()+6)%7] + " " + d.getDate() + " de " + MESES[d.getMonth()];
+    titleEl.textContent = row[3];
+    linesEl.innerHTML = "";
+    row[4].forEach(function(line){
+      var li = document.createElement("li");
+      li.textContent = line;
+      linesEl.appendChild(li);
+    });
+    linkEl.href = "#" + row[5];
+    badgeEl.textContent = (row[0] === todayKey) ? "Hoy" : (row[0] < todayKey ? "Ya pasó" : "Próximamente");
+    document.querySelectorAll(".daycell.selected").forEach(function(c){ c.classList.remove("selected"); });
+    var cell = cellsByKey[row[0]];
+    if (cell) cell.classList.add("selected");
+  }
+
+  document.getElementById("prevDay").addEventListener("click", function(){
+    idx = Math.max(0, idx - 1);
+    render();
+  });
+  document.getElementById("nextDay").addEventListener("click", function(){
+    idx = Math.min(DAYS.length - 1, idx + 1);
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
