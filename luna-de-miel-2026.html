@@ -183,7 +183,7 @@ details p{margin-top:8px}
 .calhead{text-align:center;font-size:.78rem;font-weight:700;color:var(--muted);padding-bottom:4px}
 .daycell{
   display:flex;flex-direction:column;gap:2px;
-  aspect-ratio:1/1;min-height:52px;padding:4px 5px;border-radius:8px;
+  aspect-ratio:1/1;min-width:0;padding:4px 5px;border-radius:8px;
   text-decoration:none;color:var(--ink);
   background:color-mix(in srgb, var(--zone,var(--muted)) 14%, var(--surface) 86%);
   border:1px solid color-mix(in srgb, var(--zone,var(--muted)) 30%, var(--line) 70%);
@@ -195,7 +195,7 @@ details p{margin-top:8px}
 .daycell.istoday{outline:3px solid var(--lagoon);outline-offset:1px}
 .daycell.selected{box-shadow:0 0 0 2px var(--ink) inset}
 @media (min-width:480px){
-  .daycell{min-height:64px;padding:6px 7px}
+  .daycell{padding:6px 7px}
   .daycell .dnum{font-size:1rem}
   .daycell .dlabel{font-size:.72rem}
 }
